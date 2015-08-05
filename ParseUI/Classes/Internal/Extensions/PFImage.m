@@ -23,7 +23,7 @@
 
 #import "PFColor.h"
 #import "PFRect.h"
-#import "PFResources.h"
+//#import "PFResources.h"
 
 @implementation PFImage
 
@@ -68,11 +68,13 @@
 
 + (UIImage *)imageNamed:(NSString *)imageName {
     UIImage *image = [UIImage imageNamed:imageName];
+    return image;
+/*
     if (image) {
         // If there is an external override for the image at the given path, use it.
         return image;
     }
-
+ 
     NSString *fileExtension = [imageName pathExtension];
     NSMutableString *filenameWithoutExtension = [[imageName stringByDeletingPathExtension] mutableCopy];
     [filenameWithoutExtension replaceOccurrencesOfString:@"-\\."
@@ -98,7 +100,7 @@
     if (!data) {
         NSString *selectorName = [filenameWithoutExtension stringByAppendingFormat:@"_%@", fileExtension];
         SEL selector = NSSelectorFromString(selectorName);
-        data = (NSData *)[PFResources performSelector:selector];
+        //data = (NSData *)[PFResources performSelector:selector];
     }
     image = [[UIImage alloc] initWithData:data];
 
@@ -106,6 +108,10 @@
     // stretches the image by 2x again. To do that, we drop down to CGImage layer to take advantage of
     // +[UIImage imageWithCGImage:scale:orientation]
     return [UIImage imageWithCGImage:image.CGImage scale:imageScale orientation:image.imageOrientation];
+    
+    return [super imageNamed:imageName];
+  */
 }
+
 
 @end

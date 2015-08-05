@@ -38,15 +38,16 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         [_activityIndicator startAnimating];
         [self addSubview:_activityIndicator];
 
         _loadingLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _loadingLabel.text = NSLocalizedString(@"Loading...", @"Loading message of PFQueryTableViewController");
         _loadingLabel.backgroundColor = [UIColor clearColor];
-        _loadingLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
-        _loadingLabel.shadowColor = [UIColor whiteColor];
+        _loadingLabel.textColor = [UIColor whiteColor];
+        //_loadingLabel.shadowOffset = CGSizeMake(0.0f, 1.0f);
+        //_loadingLabel.shadowColor = [UIColor whiteColor];
         [_loadingLabel sizeToFit];
         [self addSubview:_loadingLabel];
     }
